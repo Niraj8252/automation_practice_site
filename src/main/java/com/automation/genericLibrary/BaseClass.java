@@ -1,4 +1,4 @@
-package com.automationtesting.genericLibrary;
+package com.automation.genericLibrary;
 
 import java.io.IOException;
 
@@ -12,25 +12,26 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
-import com.sdet34l1.genericLibrary.ExcelDataLibrary;
-import com.sdet34l1.genericLibrary.IconstantPathLibrary;
-import com.sdet34l1.genericLibrary.JavaLibrary;
-import com.sdet34l1.genericLibrary.PropertyFileDataLibrary;
-import com.sdet34l1.genericLibrary.WebDriverDataLibrary;
-import com.vtiger.elementRepository.HomePage;
-import com.vtiger.elementRepository.LoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+
+/**
+ * This class is used to common activities of the scripts in the form of annotations
+ * @author Niraj
+ *
+ */
 public class BaseClass {
-	
 	public WebDriverDataLibrary webDriverDataLibrary;
 	public String username;
 	public String password;
 	public String browser;
 	public WebDriver driver;
 	public long longTimeOut;
+	//public HomePage homepage;
+    public JavaLibrary javaLibrary;  
     public int randomNumber;
     public static WebDriver staticdriver;
    
@@ -44,8 +45,8 @@ public class BaseClass {
 	
 	public void beforeSuiteTest() throws IOException
 	{
-		PropertyFileDataLibrary.openPropertyFile(IconstantPath.PROPERTYFILEPATH);
-		ExcelDataLibrary.openExcel(IconstantPath.EXCELFILEPATH);
+		PropertyFileDataLibrary.openPropertyFile(IconstantPathLibrary.PROPERTYFILEPATH);
+		ExcelDataLibrary.openExcel(IconstantPathLibrary.EXCELFILEPATH);
 
 	}
 	
@@ -64,15 +65,15 @@ public class BaseClass {
 
 		String url = PropertyFileDataLibrary.getDataFromPropertyFile("url");
 		System.out.println(url);
-		 username = PropertyFileDataLibrary.getDataFromPropertyFile("userName");
-		System.out.println(username);
-		 password = PropertyFileDataLibrary.getDataFromPropertyFile("password");
-		System.out.println(password);
+//		 username = PropertyFileDataLibrary.getDataFromPropertyFile("userName");
+//		System.out.println(username);
+//		 password = PropertyFileDataLibrary.getDataFromPropertyFile("password");
+//		System.out.println(password);
 		String timeout = PropertyFileDataLibrary.getDataFromPropertyFile("timeout");
 		System.out.println(timeout);
 		String browser = PropertyFileDataLibrary.getDataFromPropertyFile("browser");
-//		//System.out.println(browser);
-	
+		System.out.println(browser);
+		
 		
 		 longTimeOut=javaLibrary.stringConvertToLong(timeout);
 		 randomNumber = javaLibrary.generateRandomNum(1000);
@@ -104,8 +105,7 @@ public class BaseClass {
 		webDriverDataLibrary.initializeAction(driver);
  		WebDriverDataLibrary.explicitlyWait(driver, longTimeOut);
 
-		 loginpage=new LoginPage(driver);
-		 homepage = new HomePage(driver);
+		// homepage = new HomePage(driver);
 		WebDriverDataLibrary.navigateApp(url, driver);
 
 	}
@@ -113,21 +113,21 @@ public class BaseClass {
 	/**
 	 * This annotation is used to login the application
 	 */
-	@BeforeMethod(groups="baseclass")
-	public void beforeMethodTest()
-	{
-		loginpage.loginAction(username, password);
-
-	}
+//	@BeforeMethod
+//	public void beforeMethodTest()
+//	{
+//		loginpage.loginAction(username, password);
+//
+//	}
 	
 	/**
 	 * This annotation is used to logout the application 
 	 */
-	@AfterMethod(groups="baseclass")
-	public void afterMethodTest()
-	{
-		homepage.signOut(driver, webDriverDataLibrary);
-	}
+//	@AfterMethod(groups="baseclass")
+//	public void afterMethodTest()
+//	{
+//		homepage.signOut(driver, webDriverDataLibrary);
+//	}
 	
 	/**
 	 * This annotation is used to close the browser
@@ -147,6 +147,7 @@ public class BaseClass {
 		ExcelDataLibrary.writeDataInExcel(IconstantPathLibrary.EXCELFILEPATH);
 		ExcelDataLibrary.closeExcel();
 	}
+	
 	
 
 }

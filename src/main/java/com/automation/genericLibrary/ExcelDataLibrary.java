@@ -1,4 +1,4 @@
-package com.automationtesting.genericLibrary;
+package com.automation.genericLibrary;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,9 +10,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+/**
+ * This class contains excel file specific common methods
+ * @author Niraj
+ *
+ */
 public class ExcelDataLibrary {
 	
-static Workbook book;
+	static Workbook book;
 	
 	/**
 	 * This method is used to fetch the data from excel
@@ -123,5 +128,5 @@ static Workbook book;
 			e.printStackTrace();
 		}
 	}
-
+	
 }
