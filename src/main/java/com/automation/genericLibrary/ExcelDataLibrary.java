@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -28,7 +29,9 @@ public class ExcelDataLibrary {
 	 */
 	public static String getDataFromExcel(String sheetName, int rowNumber, int cellNumber) 
 	{
-		String data = book.getSheet(sheetName).getRow(rowNumber).getCell(cellNumber).getStringCellValue();
+		DataFormatter format=new DataFormatter();
+		Sheet sh = book.getSheet(sheetName);
+		String data=format.formatCellValue(sh.getRow(rowNumber).getCell(cellNumber));
 		return data;
 	}
 	
