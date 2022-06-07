@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.automationtesting.activityTest.AddToCartBookInAutomationTest">
+      <class name="com.automationtesting.activityTest.DescriptionAndReviewTest">
         <methods>
-          <include name="addToCartBook"/>
           <include name="afterClassTest"/>
           <include name="beforeSuiteTest"/>
           <include name="afterSuiteTest"/>
           <include name="beforeClassTest"/>
+          <include name="descriptionReviewTest"/>
         </methods>
-      </class> <!-- com.automationtesting.activityTest.AddToCartBookInAutomationTest -->
+      </class> <!-- com.automationtesting.activityTest.DescriptionAndReviewTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

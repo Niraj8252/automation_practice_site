@@ -1,9 +1,12 @@
 package com.automation.elementRepository;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.automation.genericLibrary.WebDriverDataLibrary;
 
 public class BillingPage {
 	
@@ -22,8 +25,13 @@ public class BillingPage {
 	@FindBy(name="billing_phone")
 	private WebElement phonetxt;
 	
-	@FindBy(xpath="//span[text()='India']")
-	private WebElement countrytxt;
+	@FindBy(id="s2id_billing_country")
+	private WebElement coutryDropdow;
+	
+	
+	
+	@FindBy(id="s2id_autogen1_search")
+	private WebElement countrytxtField;
 	
 	@FindBy(id="billing_address_1")
 	private WebElement addresstxt;
@@ -31,7 +39,7 @@ public class BillingPage {
 	@FindBy(name="billing_city")
 	private WebElement towntxt;
 	
-	@FindBy(xpath="//span[text()='Karnataka']")
+	@FindBy(name="billing_state")
 	private WebElement statetxt;
 	
 	@FindBy(id="billing_postcode")
@@ -48,19 +56,36 @@ public class BillingPage {
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void enterShippingDetails(String firstName, String lastName,String companyName,String email,String phoneNo,String countryName,String address,String town,String stateName,String pinCode)
+	public void enterShippingDetails(String firstName, String lastName,String companyName,String email,String phoneNo)
 	{
 		firstNametxt.sendKeys(firstName);
 		lastNametxt.sendKeys(lastName);
 		companyNametxt.sendKeys(companyName);
 		emailtxt.sendKeys(email);
 		phonetxt.sendKeys(phoneNo);
-		countrytxt.sendKeys(countryName);
+		
+			
+	}
+	public void enterCounntryAddTowndata(String countryName,String address,String town)
+	{
+		coutryDropdow.click();
+		countrytxtField.sendKeys(countryName,Keys.ENTER);
 		addresstxt.sendKeys(address);
 		towntxt.sendKeys(town);
+
+
+	}
+	
+	public void enterStateAndPin(String stateName,String pinCode)
+	{
 		statetxt.sendKeys(stateName);
 		postalcodetxt.sendKeys(pinCode);
-			
+	}
+	
+	public void scrollPageBillPage(WebDriver driver)
+	{
+		WebDriverDataLibrary.initializejse(driver);
+		WebDriverDataLibrary.scrollTillElement(codPayamentCeckbox);
 	}
 	public void clickCodCheckbox()
 	{

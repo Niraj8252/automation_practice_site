@@ -12,6 +12,8 @@ public class ShopPage {
 	@FindBy(xpath = "//img[@title='Functional Programming in JS']")
 	private WebElement FunctionalBooklnk;
 	
+	@FindBy(xpath = "//a[text()='Home']")
+	private WebElement Homelnk;
 	
 	public ShopPage(WebDriver driver)
 	{
@@ -20,8 +22,12 @@ public class ShopPage {
 	
 	public void clickBook()
 	{
-		FunctionalBooklnk.click();
-		
+		FunctionalBooklnk.click();	
+	}
+	
+	public void clickHome()
+	{
+		Homelnk.click();	
 	}
 	
 	public void scrollPage(WebDriver driver)

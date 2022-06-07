@@ -15,7 +15,7 @@ public class AddToCartBookInAutomationTest extends BaseClass{
 	
 	
 	@Test
-public void addToCartBook()
+public void addToCartBookTest()
 {
 		ExcelDataLibrary.openExcel(IconstantPathLibrary.EXCELFILEPATH);
 		String firstName=ExcelDataLibrary.getDataFromExcel("AddCartBook",2 , 1);
@@ -40,7 +40,10 @@ public void addToCartBook()
 	FunctionalProgrammingPage.clickBasket();
 	FunctionalProgrammingPage.clickViewBasket();
 	basketpage.clickProceedLnk();
-	billingPage.enterShippingDetails(firstName, lastName, companyName, email, phoneno, country, address, town, state, pinCode);
+	billingPage.enterShippingDetails(firstName, lastName, companyName, email, phoneno);
+	billingPage.enterCounntryAddTowndata(country, address, town);
+	billingPage.enterStateAndPin(state, pinCode);
+	billingPage.scrollPageBillPage(driver);
 	billingPage.clickCodCheckbox();
 	billingPage.clickOrderBtn();
 }

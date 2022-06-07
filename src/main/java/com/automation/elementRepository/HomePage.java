@@ -10,6 +10,9 @@ public class HomePage {
 	@FindBy(linkText="Shop")
 	private WebElement shopLnk;
 	
+	@FindBy(xpath="//img[@alt='Thinking in HTML']")
+	private WebElement ThinkingHTMLLnk;
+	
 	public HomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
@@ -18,6 +21,10 @@ public class HomePage {
 	public void clickShop()
 	{
 		shopLnk.click();
+	}
+	public void clickThinkingHTML()
+	{
+		ThinkingHTMLLnk.click();
 	}
 
 }
