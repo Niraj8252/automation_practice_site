@@ -21,7 +21,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 /**
  * This class is used to common activities of the scripts in the form of annotations
  * @author Niraj
- *
+ * this is niraj
  */
 public class BaseClass {
 	public WebDriverDataLibrary webDriverDataLibrary;
